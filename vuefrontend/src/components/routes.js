@@ -1,0 +1,24 @@
+import Cookies from 'js-cookie'
+import VueRouter from 'vue-router'
+
+import Home from './Home'
+import Login from './Login'
+
+const routes = [{path: '', component: Login}, {path: '/home', component: Home}]
+
+const router = new VueRouter({
+  routes,
+})
+
+// Protected routes
+router.beforeEach((to, from, next) => {
+  switch (to.path) {
+    case '/home':
+      Cookies.get('token') ? next() : next(false)
+      break
+    default:
+      next()
+  }
+})
+
+export default router

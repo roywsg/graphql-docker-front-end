@@ -1,0 +1,38 @@
+{
+  "auth": {
+    "email": "demo",
+    "password": "$2b$10$cPggzsTPSoaoI0GN5OgEMOcYjCItiMwIkoGG5bygP62V78KYDylJC"
+  },
+  "skills": [
+    {
+      "id": "1",
+      "name": "React",
+      "level": 8,
+      "type": "frontend"
+    },
+    {
+      "id": "2",
+      "name": "Angular",
+      "level": 8,
+      "type": "frontend"
+    },
+    {
+      "id": "3",
+      "name": "Vue",
+      "level": 8,
+      "type": "frontend"
+    },
+    {
+      "id": "4",
+      "name": "JavaScript",
+      "level": 10,
+      "type": "frontend"
+    },
+    {
+      "id": "5",
+      "name": "Node",
+      "level": 8,
+      "type": "backend"
+    }
+  ]
+}
