@@ -1,31 +1,32 @@
 <template>
   <div class="login">
-    <h1>Login</h1>
-    <form @submit.prevent="submit">
-      <div class="form-group">
-        <label for="email">Email: </label>
-        <input type="text" id="email" v-model="form.email">
-      </div>
+    <div class="container">
+      <h1>Login</h1>
+        <form @submit.prevent="submit">
+          <div class="form-group">
+            <label for="email">Email: </label>
+            <input type="text" id="email"  class="form-control" v-model="form.email">
+          </div>
 
-      <div class="form-group">
-        <label for="password">Password: </label>
-        <input type="password" id="password" v-model="form.password">
-      </div>
+          <div class="form-group">
+            <label for="password">Password: </label>
+            <input type="password" id="password" class="form-control" v-model="form.password">
+          </div>
 
-      <div class="form-group">
-        <input type="submit" value="Submit">
-      </div>
+          <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary" >
+          </div>
 
-      <div class="alert alert-danger" v-if="authErr">
-        Incorrect login
-      </div>
-    </form>
+          <div class="alert alert-danger" v-if="authErr">
+            Incorrect login
+          </div>
+        </form>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import Cookies from 'js-cookie'
 import config from '../app.config'
 
 export default {
@@ -42,28 +43,10 @@ export default {
   methods: {
     submit() {
       this.authErr = false
-
-      axios
-        .post(config.apiendpoint, {
-          query: `
-          query auth{
-            auth(email:"${this.form.email}", password:"${this.form.password}") {
-              status
-              token
-            }
-          }
-        `,
-        })
-        .then(res => {
-          const auth = res.data.data.auth
-          if (auth.status === 'ok') {
-            Cookies.set('token', auth.token, {expires: 1})
-            this.$router.push('/home')
-          } else {
-            this.authErr = true
-          }
-        })
-        .catch(err => console.log(err))
+      this.$store.dispatch('auth', this.form).then(res => {
+        console.log(res)
+        res ? this.$router.push('/home') : (this.authErr = true)
+      })
     },
   },
 }

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Cookies from 'js-cookie'
 import Vue from 'vue'
 import Vuex from 'vuex'
 
@@ -8,6 +9,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
+    auth: false,
     skills: [],
   },
   getters: {
@@ -16,6 +18,9 @@ const store = new Vuex.Store({
     },
   },
   mutations: {
+    auth(state, value) {
+      state.auth = value
+    },
     setSkills(state, skills) {
       state.skills = skills
     },
@@ -37,6 +42,30 @@ const store = new Vuex.Store({
     },
   },
   actions: {
+    auth(context, form) {
+      return axios
+        .post(config.apiendpoint, {
+          query: `
+            query auth{
+              auth(email:"${form.email}", password:"${form.password}") {
+                status
+                token
+              }
+            }
+          `,
+        })
+        .then(res => {
+          const auth = res.data.data.auth
+          if (auth.status === 'ok') {
+            Cookies.set('token', auth.token, {expires: 1})
+            context.commit('auth', true)
+            return true
+          } else {
+            return false
+          }
+        })
+        .catch(err => console.log(err))
+    },
     getSkills(context) {
       axios
         .post(config.apiendpoint, {
