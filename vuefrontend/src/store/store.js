@@ -28,8 +28,8 @@ const store = new Vuex.Store({
       state.skills = [...state.skills, skill]
     },
     removeSkill(state, id) {
-      const oldSkillIdx = state.skills.findIndex(s => s.id === id)
-      state.skills.splice(oldSkillIdx, 1)
+      const newSkills = state.skills.filter(s => s.id !== id)
+      state.skills = newSkills
     },
     updateSkill(state, skill) {
       const newSkills = state.skills.map(s => {
