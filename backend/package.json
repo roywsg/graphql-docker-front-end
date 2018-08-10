@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js | json-server --watch skills.json --port 3001",
+    "dev": "concurrently --kill-others -p \"[{name}]\" -n \"graphql,json\" \"npm run dev:graphql\"  \"npm run dev:json\"",
     "dev:graphql": "nodemon app.js",
     "dev:json": "json-server --watch skills.json --port 3001",
-    "start": "nodemon app.js | json-server --watch skills.json --port 3001",
+    "start": "concurrently --kill-others -p \"[{name}]\" -n \"graphql,json\" \"npm run dev:graphql\" \"npm run dev:json\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -17,6 +17,7 @@
     "axios": "^0.18.0",
     "bcrypt": "^3.0.0",
     "cors": "^2.8.4",
+    "concurrently": "^3.6.1",
     "express": "^4.16.3",
     "express-graphql": "^0.6.12",
     "graphql": "^0.13.2",
