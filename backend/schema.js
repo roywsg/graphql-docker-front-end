@@ -104,7 +104,7 @@ const root = {
     }
 
     if (name) skill.name = name
-    if (level) skill.level = level
+    if (level !== undefined) skill.level = level
     if (type) skill.type = type
 
     return axios
