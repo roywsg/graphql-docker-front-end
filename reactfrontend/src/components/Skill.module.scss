@@ -1,0 +1,48 @@
+.skillBox {
+  position: relative;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 20px #ccc;
+  padding: 1em;
+
+  &:hover {
+    .dNone {
+      display: inline-block !important;
+    }
+  }
+}
+.faTimesCircle {
+  position: absolute;
+  right: 1em;
+  color: rgb(244, 66, 66);
+  cursor: pointer;
+}
+.faEdit {
+  cursor: pointer;
+}
+.skillLevel {
+  width: calc(100% - 2em);
+  border: 1px solid orange;
+  background-color: pink;
+  height: 1em;
+  border-radius: 10px;
+}
+.editBox {
+  position: absolute;
+  background: white;
+  width: 14em;
+  top: -10em;
+  z-index: 1;
+  right: -5em;
+  padding: 1em;
+  border-radius: 1.2em;
+  box-shadow: 0 2px 20px #ccc;
+}
+.editBtn {
+  margin-right: 0.5em;
+}
+
+h6 {
+  display: inline-block;
+  margin-right: 0.5em;
+}

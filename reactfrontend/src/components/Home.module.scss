@@ -1,0 +1,10 @@
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1em;
+}
+
+:global(.animated.zoomIn) {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
