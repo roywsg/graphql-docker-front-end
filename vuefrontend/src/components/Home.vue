@@ -3,7 +3,7 @@
     <section>
       <div class="container">
         <h2>Skills</h2>
-          <transition-group name="skills" class="skills" enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
+          <transition-group :duration="1000" name="skills" class="skills" enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
             <Skill v-for="s in skills" :key="s.id" :skill="s"  />
           </transition-group>
       </div>
@@ -93,9 +93,9 @@ export default {
   grid-gap: 1em;
 }
 
-.animated-enter-active,
-.animated-leave-active {
-  animation-duration: 5s;
+.animated.zoomIn,
+.animated.zoomOut {
+  animation-duration: 1s;
   animation-fill-mode: both;
 }
 </style>
