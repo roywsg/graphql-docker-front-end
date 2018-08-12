@@ -21,18 +21,32 @@ docker run -p 8080:8080 vue/frontend
 **4. Login with email: demo, password: demo**
 
 ## Using npm
+
 **1. Install dependancies and start app**
+
 ```
 yarn install && yarn serve
 ```
 
 **2. Open Chrome in http://localhost:8080/graphql**
 
+**3. Login with email: demo, password: demo**
+
+## Concepts used
+
+- axios
+- css grids
+- vue-cli
+- vue-router
+- vue-router guards
+- vuex
+
 ## Useful
 
 - https://vuejs.org/v2/cookbook/dockerize-vuejs-app.html
 
 ---
+
 ## Below are just for reference
 
 ## Project setup
